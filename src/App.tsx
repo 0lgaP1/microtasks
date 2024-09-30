@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {Button} from "./components/button/Button";
+import {FullInput} from "./components/input/FullInput";
 
 // import { MouseEvent } from 'react';
 
@@ -30,6 +31,14 @@ function App() {
         console.log(a)
     }
 
+    let [message, setMessage] = useState([
+        {message: 'message1'},
+        {message: 'message2'},
+        {message: 'message3'}
+    ])
+    const addMessage = ()=>{
+        console.log('aaa')
+    }
     return (
         <>
             {/*<button onClick={(event:MouseEvent<HTMLButtonElement>)=>{onClickHandler('Jacob')}}>The name of the 1st subscriber</button>*/}
@@ -46,6 +55,12 @@ function App() {
 
             <h1>{a}</h1>
             <Button name={"useState Button"} callBack={onClickHandlerForUseState} />
+            <FullInput addMessage={addMessage}/>
+            {message.map((el, index) => {
+                return (
+                    <div key={index}>{el.message}</div>
+                )
+            })}
             </>
     );
 }
