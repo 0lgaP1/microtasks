@@ -6,7 +6,8 @@ import {FullInput} from "./components/input/FullInput";
 // import { MouseEvent } from 'react';
 
 function App() {
-    const onClickHandler = (name: string) => {console.log(name)
+    const onClickHandler = (name: string) => {
+        console.log(name)
     }
     const foo1 = () => {
         console.log(100200)
@@ -36,32 +37,39 @@ function App() {
         {message: 'message2'},
         {message: 'message3'}
     ])
-    const addMessage = ()=>{
-        console.log('aaa')
+    const addMessage = (title: string) => {
+        let newMessage = {message: title}
+            setMessage([newMessage, ...message])
     }
     return (
         <>
             {/*<button onClick={(event:MouseEvent<HTMLButtonElement>)=>{onClickHandler('Jacob')}}>The name of the 1st subscriber</button>*/}
             <button onClick={() => {
                 onClickHandler('Jacob')
-            }}>The name of the 1st subscriber </button>
-            <button onClick={() => {onClickHandler('Jack')}}>The name of the 2nd subscriber</button>
+            }}>The name of the 1st subscriber
+            </button>
+            <button onClick={() => {
+                onClickHandler('Jack')
+            }}>The name of the 2nd subscriber
+            </button>
             <button onClick={foo1}>1</button>
-            <button onClick={() => {foo2(100200)}}>2
+            <button onClick={() => {
+                foo2(100200)
+            }}>2
             </button>
             <Button name={"I'm a stupid button"} callBack={componentButton3Handler}/>
             <Button name={"ComponentButton1"} callBack={() => componentButton1Handler('Subscriber Ivan', 22, 'Minsk')}/>
             <Button name={"ComponentButton2"} callBack={() => componentButton2Handler('Subscriber Vasylij')}/>
-
             <h1>{a}</h1>
-            <Button name={"useState Button"} callBack={onClickHandlerForUseState} />
+            <Button name={"useState Button"} callBack={onClickHandlerForUseState}/>
+
             <FullInput addMessage={addMessage}/>
             {message.map((el, index) => {
                 return (
                     <div key={index}>{el.message}</div>
                 )
             })}
-            </>
+        </>
     );
 }
 
